@@ -10,7 +10,7 @@ export default function Search() {
   return (
     <div>
       <Nav />
-      <Main query={search ? search : undefined} />
+      <Main query={search} />
     </div>
   );
 }

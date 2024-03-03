@@ -57,7 +57,7 @@ interface DailyForecast {
 interface MainProps {
   latitude?: number;
   longitude?: number;
-  query?: string;
+  query?: string | null;
 }
 
 export default function Main({ latitude, longitude, query }: MainProps) {
