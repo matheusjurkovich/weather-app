@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Wind, Cloud, Droplet, Eye } from "lucide-react";
-import Image from 'next/image';
+import Image from "next/image";
 import moment from "moment";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
@@ -108,7 +108,7 @@ export default function Main({ latitude, longitude, query }: MainProps) {
   useEffect(() => {
     getWeather();
     getForecast();
-  }, []);
+  }, [query, latitude, longitude]);
 
   const currentDate = new Date();
   const currentHour = currentDate.getHours();
@@ -179,11 +179,11 @@ export default function Main({ latitude, longitude, query }: MainProps) {
                   <div className="flex flex-col items-center gap-1">
                     {forecast.weather[0]?.icon && (
                       <Image
-                      src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
-                      alt="Weather icon"
-                      width={48}
-                      height={48}
-                    />
+                        src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
+                        alt="Weather icon"
+                        width={48}
+                        height={48}
+                      />
                     )}
                     {forecast.weather[0]?.description && (
                       <p className="text-center">
@@ -216,12 +216,12 @@ export default function Main({ latitude, longitude, query }: MainProps) {
                 <hr className="h-full w-1 border-white bg-white" />
 
                 <div className="flex flex-col items-center">
-                <Image
-                  src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
-                  alt="Weather icon"
-                  width={48}
-                  height={48}
-                />
+                  <Image
+                    src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
+                    alt="Weather icon"
+                    width={48}
+                    height={48}
+                  />
                   <div>
                     {forecast?.weather[0]?.description && (
                       <p>
