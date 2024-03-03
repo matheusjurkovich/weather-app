@@ -1,8 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Wind, Cloud, Droplet, Eye } from "lucide-react";
+import Image from 'next/image';
 import moment from "moment";
+
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+
 interface Weather {
   weather: [
     {
@@ -105,7 +108,7 @@ export default function Main({ latitude, longitude, query }: MainProps) {
   useEffect(() => {
     getWeather();
     getForecast();
-  }, [latitude, longitude, query]);
+  }, []);
 
   const currentDate = new Date();
   const currentHour = currentDate.getHours();
@@ -130,9 +133,11 @@ export default function Main({ latitude, longitude, query }: MainProps) {
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
               {weather?.weather[0]?.icon && (
-                <img
+                <Image
                   src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
                   alt="Weather icon"
+                  width={48}
+                  height={48}
                 />
               )}
               {weather?.weather[0]?.description && (
@@ -173,10 +178,12 @@ export default function Main({ latitude, longitude, query }: MainProps) {
 
                   <div className="flex flex-col items-center gap-1">
                     {forecast.weather[0]?.icon && (
-                      <img
-                        src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
-                        alt="Weather icon"
-                      />
+                      <Image
+                      src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
+                      alt="Weather icon"
+                      width={48}
+                      height={48}
+                    />
                     )}
                     {forecast.weather[0]?.description && (
                       <p className="text-center">
@@ -209,10 +216,12 @@ export default function Main({ latitude, longitude, query }: MainProps) {
                 <hr className="h-full w-1 border-white bg-white" />
 
                 <div className="flex flex-col items-center">
-                  <img
-                    src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
-                    alt="Weather icon"
-                  />
+                <Image
+                  src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
+                  alt="Weather icon"
+                  width={48}
+                  height={48}
+                />
                   <div>
                     {forecast?.weather[0]?.description && (
                       <p>
